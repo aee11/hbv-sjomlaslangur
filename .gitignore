@@ -112,3 +112,10 @@ src/main/resources/application.properties
 
 # Client dist; make with `npm run compile` in `src/main/webapp/client`
 src/main/resources/static/dist
+
+
+# Client!
+src/main/webapp/client/.DS_STORE
+src/main/webapp/client/*.log
+
+src/main/webapp/client/node_modules
