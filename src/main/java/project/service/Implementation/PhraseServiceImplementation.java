@@ -3,16 +3,10 @@ package project.service.Implementation;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import project.persistence.entities.Phrase;
-import project.persistence.entities.PostitNote;
 import project.persistence.repositories.PhraseRepository;
-import project.persistence.repositories.PostitNoteRepository;
 import project.service.PhraseService;
-import project.service.PostitNoteService;
 import project.service.UtilitiesService;
 
-import javax.persistence.EntityManager;
-import javax.persistence.PersistenceContext;
-import java.util.Collections;
 import java.util.Date;
 import java.util.List;
 
@@ -58,12 +52,12 @@ public class PhraseServiceImplementation implements PhraseService {
     }
 
     @Override
-     public void upvote(Long phraseId) {
-        repository.incrementUpvotes(phraseId);
+     public void upvoteAndUpdateHotness(Long phraseId) {
+        repository.incrementUpvotesAndUpdateHotness(phraseId);
     }
 
     @Override
-    public void downvote(Long phraseId) {
-        repository.incrementDownvotes(phraseId);
+    public void downvoteAndUpdateHotness(Long phraseId) {
+        repository.incrementDownvotesAndUpdateHotness(phraseId);
     }
 }

@@ -25,12 +25,12 @@ public interface PhraseRepository extends JpaRepository<Phrase, Long> {
     @Modifying
     @Transactional
     @Query(value = "UPDATE Phrase p SET p.upvotes = p.upvotes+1, p.hotness = sign(p.upvotes+1 - p.downvotes) * log(greatest(abs(p.upvotes+1 - p.downvotes), 1)) + (date_part('epoch', p.created) - 1134028003) / 45000.0 WHERE p.id = :phraseId")
-    void incrementUpvotes(@Param("phraseId") Long phraseId);
+    void incrementUpvotesAndUpdateHotness(@Param("phraseId") Long phraseId);
 
     @Modifying
     @Transactional
     @Query(value = "UPDATE Phrase p SET p.downvotes = p.downvotes+1, p.hotness = sign(p.upvotes - p.downvotes+1) * log(greatest(abs(p.upvotes - p.downvotes+1), 1)) + (date_part('epoch', p.created) - 1134028003) / 45000.0 WHERE p.id = :phraseId")
-    void incrementDownvotes(@Param("phraseId") Long phraseId);
+    void incrementDownvotesAndUpdateHotness(@Param("phraseId") Long phraseId);
 
 //    round(cast(sign(p.upvotes - p.downvotes) * log(greatest(abs(p.upvotes - p.downvotes), 1)) + (date_part('epoch', p.created) - 1134028003) / 45000.0 AS numeric, 7))
 }
