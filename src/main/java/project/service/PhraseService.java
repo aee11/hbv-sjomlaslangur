@@ -13,4 +13,6 @@ public interface PhraseService {
     Phrase findOne(Long id);
     Phrase findByName(String name);
 
+    void upvote(Long phraseId);
+    void downvote(Long phraseId);
 }

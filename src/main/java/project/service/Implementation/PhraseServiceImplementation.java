@@ -10,6 +10,8 @@ import project.service.PhraseService;
 import project.service.PostitNoteService;
 import project.service.UtilitiesService;
 
+import javax.persistence.EntityManager;
+import javax.persistence.PersistenceContext;
 import java.util.Collections;
 import java.util.Date;
 import java.util.List;
@@ -53,5 +55,15 @@ public class PhraseServiceImplementation implements PhraseService {
     @Override
     public Phrase findByName(String name) {
         return null;
+    }
+
+    @Override
+     public void upvote(Long phraseId) {
+        repository.incrementUpvotes(phraseId);
+    }
+
+    @Override
+    public void downvote(Long phraseId) {
+        repository.incrementDownvotes(phraseId);
     }
 }

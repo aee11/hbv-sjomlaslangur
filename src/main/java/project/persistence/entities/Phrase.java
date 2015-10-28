@@ -20,13 +20,13 @@ public class Phrase extends AbstractTimestampEntity {
     private String description;
     private Long upvotes;
     private Long downvotes;
-    private Long hotness;
+    private double hotness;
 
 
     Phrase() {
     } // JPA only
 
-    public Phrase(String word, String description, Long upvotes, Long downvotes, Long hotness, Date dateAdded) {
+    public Phrase(String word, String description, Long upvotes, Long downvotes, double hotness, Date dateAdded) {
         this.word = word;
         this.description = description;
         this.upvotes = upvotes;
@@ -74,11 +74,11 @@ public class Phrase extends AbstractTimestampEntity {
         this.downvotes = downvotes;
     }
 
-    public Long getHotness() {
+    public double getHotness() {
         return hotness;
     }
 
-    public void setHotness(Long hotness) {
+    public void setHotness(double hotness) {
         this.hotness = hotness;
     }
 }

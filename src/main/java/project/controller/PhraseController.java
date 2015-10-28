@@ -37,4 +37,14 @@ public class PhraseController {
         return phraseService.findOne(phraseId);
     }
 
+    @RequestMapping(value = "/{phraseId}/upvote", method=RequestMethod.POST)
+    public void upvotePhraseById(@PathVariable Long phraseId){
+        phraseService.upvote(phraseId);
+    }
+
+    @RequestMapping(value = "/{phraseId}/downvote", method=RequestMethod.POST)
+    public void downvotePhraseById(@PathVariable Long phraseId){
+        phraseService.downvote(phraseId);
+    }
+
 }
