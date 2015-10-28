@@ -18,13 +18,13 @@ public class Phrase {
     @Temporal(TemporalType.TIMESTAMP)
     private java.util.Date dateAdded;
 
-    private String name;
+    private String word;
     private String description;
 
     Phrase() {} // JPA only
 
-    public Phrase(String name, String description) {
-        this.name = name;
+    public Phrase(String word, String description) {
+        this.word = word;
         this.description = description;
     }
 
@@ -36,12 +36,12 @@ public class Phrase {
         this.id = id;
     }
 
-    public String getName() {
-        return name;
+    public String getWord() {
+        return word;
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public void setWord(String word) {
+        this.word = word;
     }
 
     public String getDescription() {

@@ -2,6 +2,7 @@ import { applyMiddleware, compose, createStore } from 'redux';
 import rootReducer  from '../reducers';
 import { devTools } from 'redux-devtools';
 import thunk        from 'redux-thunk';
+import asyncMiddleware from 'redux-async';
 import routes       from '../routes';
 import { reduxReactRouter } from 'redux-router';
 import createHistory from 'history/lib/createBrowserHistory';
@@ -9,7 +10,7 @@ import createHistory from 'history/lib/createBrowserHistory';
 export default function configureStore (initialState, debug = false) {
   let createStoreWithMiddleware;
 
-  const middleware = applyMiddleware(thunk);
+  const middleware = applyMiddleware(thunk, asyncMiddleware);
 
   if (debug) {
     createStoreWithMiddleware = compose(middleware, reduxReactRouter({ routes, createHistory }), devTools());
