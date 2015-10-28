@@ -8,8 +8,10 @@ import project.persistence.repositories.PhraseRepository;
 import project.persistence.repositories.PostitNoteRepository;
 import project.service.PhraseService;
 import project.service.PostitNoteService;
+import project.service.UtilitiesService;
 
 import java.util.Collections;
+import java.util.Date;
 import java.util.List;
 
 @Service
@@ -26,6 +28,10 @@ public class PhraseServiceImplementation implements PhraseService {
 
     @Override
     public Phrase add(Phrase phrase) {
+        phrase.setUpvotes((long) 1);
+        phrase.setDownvotes((long) 0);
+        phrase.setHotness(UtilitiesService.hotness(phrase.getUpvotes(),
+                phrase.getDownvotes(), new Date()));
         return repository.save(phrase);
     }
 

@@ -1,6 +1,7 @@
 package project.persistence.entities;
 
 import javax.persistence.*;
+import java.util.Date;
 
 /**
  * The class for the Phrase itself.
@@ -9,23 +10,28 @@ import javax.persistence.*;
  */
 @Entity
 @Table(name = "phrase") // If you want to specify a table name, you can do so here
-public class Phrase {
+public class Phrase extends AbstractTimestampEntity {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @Temporal(TemporalType.TIMESTAMP)
-    private java.util.Date dateAdded;
-
     private String word;
     private String description;
+    private Long upvotes;
+    private Long downvotes;
+    private Long hotness;
 
-    Phrase() {} // JPA only
 
-    public Phrase(String word, String description) {
+    Phrase() {
+    } // JPA only
+
+    public Phrase(String word, String description, Long upvotes, Long downvotes, Long hotness, Date dateAdded) {
         this.word = word;
         this.description = description;
+        this.upvotes = upvotes;
+        this.downvotes = downvotes;
+        this.hotness = hotness;
     }
 
     public Long getId() {
@@ -50,5 +56,29 @@ public class Phrase {
 
     public void setDescription(String description) {
         this.description = description;
+    }
+
+    public Long getUpvotes() {
+        return upvotes;
+    }
+
+    public void setUpvotes(Long upvotes) {
+        this.upvotes = upvotes;
+    }
+
+    public Long getDownvotes() {
+        return downvotes;
+    }
+
+    public void setDownvotes(Long downvotes) {
+        this.downvotes = downvotes;
+    }
+
+    public Long getHotness() {
+        return hotness;
+    }
+
+    public void setHotness(Long hotness) {
+        this.hotness = hotness;
     }
 }
